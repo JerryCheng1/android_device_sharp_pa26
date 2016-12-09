@@ -147,6 +147,9 @@ on boot
     chown system system /sys/class/leds/led:rgb_blue/start_idx
     chown system system /sys/class/leds/led:rgb_blue/blink
 
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
