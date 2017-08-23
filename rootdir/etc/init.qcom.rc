@@ -537,7 +537,7 @@ on property:persist.sys.qlogd=1
 on property:persist.sys.qlogd=0
     stop qlogd
 
-service ril-daemon1 /system/bin/rild -c 2
+service ril-daemon1 /system/vendor/bin/hw/rild -c 2
     class main
     socket rild2 stream 660 root radio
     socket rild-debug2 stream 660 radio system
