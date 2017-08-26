@@ -406,7 +406,7 @@ service qseecomd /system/bin/qseecomd
 service charger /sbin/healthd -c
     class charger
     critical
-    seclabel u:r:healthd:s0
+    seclabel u:r:charger:s0
 
 service hvdcp /system/bin/hvdcp
     class core
