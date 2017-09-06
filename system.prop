@@ -32,3 +32,5 @@ ro.qualcomm.cabl=0
 
 # handle tear down on em redial
 ro.ril.em_redial_vt_failover=true
+
+persist.media.treble_omx=false
