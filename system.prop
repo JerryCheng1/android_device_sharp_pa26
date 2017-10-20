@@ -34,3 +34,4 @@ ro.qualcomm.cabl=0
 ro.ril.em_redial_vt_failover=true
 
 persist.media.treble_omx=false
+debug.hwui.use_buffer_age=false
