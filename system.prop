@@ -34,4 +34,5 @@ ro.qualcomm.cabl=0
 ro.ril.em_redial_vt_failover=true
 
 persist.media.treble_omx=false
+camera.disable_treble=true
 debug.hwui.use_buffer_age=false
