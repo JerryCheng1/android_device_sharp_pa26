@@ -42,6 +42,7 @@ write_headers
 
 # The standard blobs
 write_makefiles "$MY_DIR"/proprietary-files-qc.txt
+write_makefiles "$MY_DIR"/proprietary-files-sharp.txt
 
 # We are done!
 write_footers
