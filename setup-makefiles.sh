@@ -1,12 +1,13 @@
 #!/bin/bash
 #
 # Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,11 +18,12 @@
 
 set -e
 
-# Required!
 DEVICE=pa24
 VENDOR=sharp
 
-# Load extractutils and do some sanity checks
+INITIAL_COPYRIGHT_YEAR=2017
+
+# Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
@@ -40,9 +42,9 @@ setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 # Copyright headers and guards
 write_headers
 
-# The standard blobs
-write_makefiles "$MY_DIR"/proprietary-files-qc.txt
 write_makefiles "$MY_DIR"/proprietary-files-sharp.txt
+echo "" >> "$PRODUCTMK"
+write_makefiles "$MY_DIR"/proprietary-files-qc.txt
 
-# We are done!
+# Finish
 write_footers
