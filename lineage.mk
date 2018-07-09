@@ -18,10 +18,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from ham device
 $(call inherit-product, device/sharp/pa24/pa24.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common Lineage stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-PRODUCT_NAME := cm_pa24
+PRODUCT_NAME := lineage_pa24
 PRODUCT_DEVICE := pa24
 PRODUCT_MANUFACTURER := Sharp
 PRODUCT_MODEL := 304SH

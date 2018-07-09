@@ -75,7 +75,7 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 # CM Hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := \
-    hardware/cyanogen/cmhw
+    hardware/lineage/lineagehw
 
 # Filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 17825792
