@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/sharp/pa24
+DEVICE_PATH := device/sharp/pa26
 
 # TODO: shouldn't be here
 BOARD_VENDOR := sharp
@@ -46,7 +46,7 @@ BOARD_DTBTOOL_ARGS := -2
 TARGET_KERNEL_ARCH := arm
 BOARD_KERNEL_CMDLINE := console=tty60,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 vmalloc=480M androidboot.selinux=permissive
 TARGET_KERNEL_SOURCE := kernel/sharp/msm8974
-TARGET_KERNEL_CONFIG := ebz_defconfig
+TARGET_KERNEL_CONFIG := ren_defconfig
 
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
@@ -173,4 +173,4 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy
 
--include vendor/sharp/pa24/BoardConfigVendor.mk
+-include vendor/sharp/pa26/BoardConfigVendor.mk
