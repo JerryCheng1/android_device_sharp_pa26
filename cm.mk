@@ -24,7 +24,7 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 PRODUCT_NAME := cm_pa26
 PRODUCT_DEVICE := pa26
 PRODUCT_MANUFACTURER := Sharp
-PRODUCT_MODEL := 304SH
+PRODUCT_MODEL := 402SH
 
 PRODUCT_GMS_CLIENTID_BASE := android-sharp
 

@@ -19,6 +19,6 @@
 
 #define BLUETOOTH_QTI_SW TRUE
 
-#define BTM_DEF_LOCAL_NAME   "304SH"
+#define BTM_DEF_LOCAL_NAME   "402SH"
 
 #endif
