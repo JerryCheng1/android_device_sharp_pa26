@@ -154,6 +154,18 @@ PROTOBUF_SUPPORTED := true
 # ANT+ - TODO: Confirm this - TODO: Confirm this - TODO: Confirm this - TODO: Confirm this
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
+#TWRP flags
+DEVICE_RESOLUTION := 1080x1920
+TW_TARGET_USES_QCOM_BSP := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_NO_USB_STORAGE := true
+TW_INCLUDE_CRYPTO := true
+BOARD_SUPPRESS_SECURE_ERASE := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_DEFAULT_EXTERNAL_STORAGE := true
+RECOVERY_VARIANT := twrp
+
 ifeq ($(HOST_OS),linux)
   ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
     ifeq ($(WITH_DEXPREOPT),)
