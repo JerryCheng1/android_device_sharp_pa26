@@ -237,15 +237,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true \
     persist.timed.enable=true \
     ro.opengles.version=196608 \
-    ro.qualcomm.bt.hci_transport=smd \
     ro.telephony.default_network=9 \
     ro.use_data_netmgrd=true \
     persist.data.netmgrd.qos.enable=true \
     persist.data.tcpackprio.enable=true \
     ro.data.large_tcp_window_size=true \
-    telephony.lteOnCdmaDevice=1 \
     wifi.interface=wlan0 \
-    ro.qualcomm.perf.cores_online=2 \
+    ro.qualcomm.perf.cores_online=1 \
     ro.vendor.extension_library=libqti-perfd-client.so \
     ro.telephony.call_ring.multiple=0
 
