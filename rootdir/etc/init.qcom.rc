@@ -263,6 +263,14 @@ service rfs_access /system/bin/rfs_access
    user system
    group system net_raw
 
+# SHARP_EXTEND UIM 2013/7/2 add start
+service uim-daemon /system/bin/uimd
+    class late_start
+    user root
+    group radio
+    oneshot
+# SHARP_EXTEND UIM add end
+
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
     class main
