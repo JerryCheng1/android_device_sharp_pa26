@@ -18,7 +18,7 @@
 
 set -e
 
-DEVICE=pa24
+DEVICE=pa26
 VENDOR=sharp
 
 # Load extract_utils and do some sanity checks

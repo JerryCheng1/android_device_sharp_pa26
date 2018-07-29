@@ -28,7 +28,7 @@
 on init
     write /sys/class/android_usb/android0/f_rndis/wceis 1
     write /sys/class/android_usb/android0/iManufacturer "SHARP Corporation"
-    write /sys/class/android_usb/android0/iProduct "304SH"
+    write /sys/class/android_usb/android0/iProduct "402SH"
     write /sys/class/android_usb/android0/iSerial ${ro.serialno}
     write /sys/class/android_usb/android0/f_mass_storage/lun0/nofua 1
     write /sys/class/android_usb/android0/f_mass_storage/lun1/nofua 1

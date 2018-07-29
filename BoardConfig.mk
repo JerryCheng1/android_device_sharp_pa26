@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/sharp/pa24
+DEVICE_PATH := device/sharp/pa26
 
 # TODO: shouldn't be here
 BOARD_VENDOR := sharp
@@ -177,4 +177,4 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy
 
--include vendor/sharp/pa24/BoardConfigVendor.mk
+-include vendor/sharp/pa26/BoardConfigVendor.mk
