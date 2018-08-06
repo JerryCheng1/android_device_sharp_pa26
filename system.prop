@@ -16,6 +16,16 @@ persist.radio.rat_on=combine
 ro.telephony.call_ring.multiple=false
 ro.telephony.ril.config=simactivation
 
+persist.hwc.mdpcomp.enable=true
+persist.timed.enable=true
+ro.opengles.version=196608
+ro.use_data_netmgrd=true
+ro.data.large_tcp_window_size=true
+wifi.interface=wlan0
+ro.qualcomm.perf.cores_online=1
+ro.vendor.extension_library=libqti-perfd-client.so
+ro.telephony.call_ring.multiple=0
+
 # sensors
 ro.qc.sdk.camera.facialproc=true
 ro.qc.sdk.gestures.camera=false
