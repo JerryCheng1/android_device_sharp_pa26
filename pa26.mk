@@ -85,13 +85,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-		camera.msm8974 \
-  	libxml2 \
+    camera.msm8974 \
+    libxml2 \
     Snap
-
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
 
 # Doze
 PRODUCT_PACKAGES += \
