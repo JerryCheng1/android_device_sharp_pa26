@@ -22,31 +22,6 @@ on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
     mkdir /oem 0550 root root
-    mkdir /mnt/shell/emulated 0700 shell shell
-    # SHARP_EXTEND filesystem Permission changed start
-    # mkdir /storage 0050 system sdcard_r
-    mkdir /storage 0751 system sdcard_r
-    # SHARP_EXTEND filesystem Permission changed end
-    mkdir /storage/emulated 0555 root root
-    mkdir /storage/emulated/legacy 0555 root root
-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
-    mkdir /mnt/media_rw/uicc0 0700 media_rw media_rw
-    mkdir /mnt/media_rw/uicc1 0700 media_rw media_rw
-    mkdir /storage/sdcard1 0700 root root
-    mkdir /storage/uicc0 0700 root root
-    mkdir /storage/usbotg 0700 root root
-
-    # Support legacy paths
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-
-    # SHARP_EXTEND filesystem usbmemory add start
-    mkdir /mnt/media_rw/usbmemory 0700 media_rw media_rw
-    mkdir /storage/usbmemory 0700 root root
-    symlink /storage/usbmemory /mnt/usbmemory
-    # SHARP_EXTEND filesystem usbmemory add end
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -296,6 +271,14 @@ service rfs_access /system/bin/rfs_access
    user system
    group system net_raw
 
+# SHARP_EXTEND UIM 2013/7/2 add start
+service uim-daemon /system/bin/uimd
+    class late_start
+    user root
+    group radio
+    oneshot
+# SHARP_EXTEND UIM add end
+
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
     class main
@@ -485,9 +468,6 @@ service time_daemon /system/bin/time_daemon
    group root
 
 on property:vold.decrypt=trigger_restart_framework
-   # SHARP_EXTEND filesystem add sdcardfs start
-   setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-   # SHARP_EXTEND filesystem add sdcardfs end
    start config_bluetooth
    start wcnss-service
 
@@ -573,63 +553,21 @@ on property:persist.sys.qlogd=1
 on property:persist.sys.qlogd=0
     stop qlogd
 
-service ril-daemon1 /system/bin/rild -c 1
-    class main
-    socket rild1 stream 660 root radio
-    socket rild-debug1 stream 660 radio system
-    user root
-    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
-
-service ril-daemon2 /system/bin/rild -c 2
+service ril-daemon1 /system/bin/rild -c 2
     class main
     socket rild2 stream 660 root radio
     socket rild-debug2 stream 660 radio system
     user root
-    disabled
+    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
     group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
 
-# SHARP_EXTEND filesystem add sdcardfs start
-## SHARP_EXTEND filesystem mod start
-## service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
-#service sdcard /system/bin/sdcard -l /data/media /mnt/shell/emulated 1023 1023
-## SHARP_EXTEND filesystem mod end
-#    class late_start
-#
-## SHARP_EXTEND filesystem mod start
-## service fuse_sdcard /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
-#service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
-## SHARP_EXTEND filesystem mod end
-#    class late_start
-#    disabled
-#
-## SHARP_EXTEND filesystem usbmemory add start
-#service fuse_usbmemory /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbmemory /storage/usbmemory
-#    class late_start
-#    disabled
-## SHARP_EXTEND filesystem usbmemory add end
-#
-#service fuse_uicc0 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/uicc0 /storage/uicc0
-#    class late_start
-#
-#service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
-#    class late_start
-#
-## Binding fuse mount point to /storage/emulated/legacy
-#on property:init.svc.sdcard=running
-#    wait /mnt/shell/emulated/0
-#    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
-on property:ro.fuse_sdcard=true
-    wait /data/media/0
-    mount sdcardfs /data/media /mnt/shell/emulated nosuid nodev uid=1023,gid=1023,derive=legacy,reserved_mb=100
-    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
-    wait /mnt/media_rw/uicc0
-    mount sdcardfs /mnt/media_rw/uicc0 /storage/uicc0 nosuid nodev uid=1023,gid=1023,derive=legacy
-    wait /mnt/media_rw/usbotg
-    mount sdcardfs /mnt/media_rw/usbotg /storage/usbotg nosuid nodev uid=1023,gid=1023,derive=legacy
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
 
-on nonencrypted
-    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-# SHARP_EXTEND filesystem add sdcardfs end
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
+    class late_start
+    disabled
 
 service ssr_diag /system/bin/ssr_diag
     class late_start

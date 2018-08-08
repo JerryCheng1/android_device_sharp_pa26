@@ -36,7 +36,7 @@
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
-//static char KEY_QC_MORPHO_HDR[] = "morpho-hdr";
+static char KEY_QC_MORPHO_HDR[] = "morpho-hdr";
 //static char KEY_QC_CHROMA_FLASH[] = "chroma-flash";
 //static char CHROMA_FLASH_ON[] = "chroma-flash-on";
 //static char CHROMA_FLASH_OFF[] = "chroma-flash-off";
